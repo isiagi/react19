@@ -78,6 +78,9 @@ function Page({}: Props) {
 //     async (currentState, formData) => {
 //       const data = await formData.get("name");
 //       await delay(3000);
+
+//       // console.log(currentState);
+
 //       return data;
 //     },
 //     null
@@ -103,6 +106,7 @@ function Page({}: Props) {
 
 //       <button
 //         type="submit"
+//         // formAction={action}
 //         className={`w-full text-white p-3 rounded-md transition-colors ${
 //           isPending
 //             ? "bg-gray-400 cursor-not-allowed"
