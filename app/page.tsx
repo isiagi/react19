@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 
 export default function Home() {
@@ -20,11 +21,7 @@ export default function Home() {
             title="Compiler"
             description="Experience the new React compiler that optimizes your code automatically."
           />
-          <FeatureCard
-            href="/servercomponent"
-            title="Server Component"
-            description="Learn how server components can improve performance and user experience."
-          />
+
           <FeatureCard
             href="/usetransaction"
             title="useTransaction"
@@ -46,6 +43,11 @@ export default function Home() {
             description="Create optimistic UI updates while waiting for operations to complete."
           />
           <FeatureCard
+            href="/servercomponent"
+            title="Server Component"
+            description="Learn how server components can improve performance and user experience."
+          />
+          <FeatureCard
             href="/use"
             title="use"
             description="Learn how to use the latest features in React 19."
@@ -61,7 +63,7 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ href, title, description }) {
+function FeatureCard({ href, title, description }: any) {
   return (
     <Link href={href} className="block">
       <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 h-full border border-indigo-100 hover:border-indigo-300 group">
