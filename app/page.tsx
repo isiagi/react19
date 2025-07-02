@@ -13,6 +13,13 @@ export default function Home() {
             Explore the latest capabilities in React 19 through interactive
             examples
           </p>
+          <Link
+            href={"https://github.com/isiagi/react19"}
+            className="text-blue-500 mt-5"
+            target="_blank"
+          >
+            Link to GitHub: https://github.com/isiagi/react19
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

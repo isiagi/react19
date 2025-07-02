@@ -5,15 +5,15 @@ async function ServerComponent() {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
-  const data = await fetch("https://jsonplaceholder.typicode.com/todos");
-  await delay(6000);
+  // const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+  // await delay(6000);
 
-  const todos = await data.json();
-  console.log(todos);
+  // const todos = await data.json();
+  // console.log(todos);
 
-  // const dataUse = fetch("https://jsonplaceholder.typicode.com/todos").then(
-  //   (res) => res.json()
-  // );
+  const dataUse = fetch("https://jsonplaceholder.typicode.com/todos").then(
+    (res) => res.json()
+  );
   await delay(6000);
 
   return (
@@ -22,8 +22,8 @@ async function ServerComponent() {
         Server Component
       </h1>
 
-      <Todos todosList={todos} />
-      {/* <Todos todosPromise={dataUse} /> */}
+      {/* <Todos todosList={todos} /> */}
+      <Todos todosPromise={dataUse} />
     </div>
   );
 }
