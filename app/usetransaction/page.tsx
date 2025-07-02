@@ -2,11 +2,9 @@
 
 import React, { useState, useTransition } from "react";
 
-type Props = {};
-
-function Page({}: Props) {
+function Page() {
   const [count, setCount] = useState(0);
-  const [userCount, setUserCount] = useState(0);
+
   const [loading, setLoading] = useState(false);
 
   const delay = (ms: number) =>
@@ -14,26 +12,40 @@ function Page({}: Props) {
 
   const handleCount = async () => {
     setLoading(true);
-    setCount(count + 1);
+
     await delay(3000);
-    setUserCount(count);
+    setCount((prev) => prev + 1);
+
     setLoading(false);
   };
   return (
-    <div className="mt-5 flex flex-col">
-      <button className="p-4 bg-gray-200" onClick={handleCount}>
+    <div className="mt-5 flex flex-col items-center max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold mb-6 text-gray-800">
+        Counter with useState
+      </h1>
+      <button
+        className="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors w-full mb-4"
+        onClick={handleCount}
+      >
         {"Increment"}
       </button>
-      {loading && <p>Loading...</p>}
 
-      {userCount && <p>{userCount}</p>}
+      {loading && (
+        <p className="text-blue-500 animate-pulse font-medium mt-2">
+          Loading...
+        </p>
+      )}
+
+      <div className="flex justify-between w-full mt-4">
+        <p className="text-lg font-medium">Current Count:{count}</p>
+      </div>
     </div>
   );
 }
 
-// function Page({}: Props) {
+// function Page() {
 //   const [count, setCount] = useState(0);
-//   const [userCount, setUserCount] = useState(0);
+
 //   const [pending, startTransition] = useTransition();
 
 //   const delay = (ms: number) =>
@@ -47,21 +59,30 @@ function Page({}: Props) {
 //       // Use functional updates to avoid closure issues
 //       setCount((prevCount) => prevCount + 1);
 //       await delay(3000);
-//       // Update userCount after count has been updated
-
-//       setUserCount(count);
 //     });
 //   };
 
 //   return (
-//     <div className="mt-5 flex flex-col">
-//       <button className="p-4 bg-gray-200" onClick={handleCount}>
-//         Increment
+//     <div className="mt-5 flex flex-col items-center max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+//       <h1 className="text-2xl font-bold mb-6 text-gray-800">
+//         Counter with useTransition
+//       </h1>
+//       <button
+//         className="p-4 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition-colors w-full mb-4"
+//         onClick={handleCount}
+//       >
+//         {"Increment"}
 //       </button>
-//       {pending && <p>Loading...</p>}
-//       {/* Make sure userCount is displayed even when it's 0 */}
-//       <p>Count: {count}</p>
-//       <p>User Count: {userCount}</p>
+
+//       {pending && (
+//         <p className="text-purple-500 animate-pulse font-medium mt-2">
+//           Loading...
+//         </p>
+//       )}
+
+//       <div className="flex justify-between w-full mt-4">
+//         <p className="text-lg font-medium">User Count:{count && count}</p>
+//       </div>
 //     </div>
 //   );
 // }

@@ -3,9 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
-type Props = {};
-
-function Page({}: Props) {
+function Page() {
   const [count, setCount] = React.useState(0);
 
   const handleClick = React.useCallback(() => {

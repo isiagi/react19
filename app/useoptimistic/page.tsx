@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useOptimistic, useState } from "react";
 
 function Page() {
   // Initialize with objects that have text and status properties
-  const initialMessages = [
+  const initialMessages: any = [
     { text: "Learn Coding", status: "complete" },
     { text: "Dance", status: "complete" },
     { text: "Play Score", status: "complete" },
@@ -14,7 +15,7 @@ function Page() {
 
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages,
-    (currentMessages, newMessageData) => {
+    (currentMessages: any, newMessageData: any) => {
       return [
         ...currentMessages,
         { text: newMessageData.text, status: newMessageData.status },
@@ -22,9 +23,10 @@ function Page() {
     }
   );
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
-  async function addMessage(formData) {
+  async function addMessage(formData: any) {
     const messageText = formData.get("message");
     if (!messageText) return;
 
@@ -35,7 +37,7 @@ function Page() {
     await delay(2000);
 
     // Actually update the base state after the "server operation"
-    setMessages((prevMessages) => [
+    setMessages((prevMessages: any) => [
       ...prevMessages,
       { text: messageText, status: "complete" },
     ]);
@@ -44,7 +46,7 @@ function Page() {
   return (
     <div className="p-4">
       <div className="mb-4">
-        {optimisticMessages.map((item, index) => (
+        {optimisticMessages.map((item: any, index: number) => (
           <div
             key={index}
             className="p-2 mb-2 bg-gray-100 rounded flex items-center"
